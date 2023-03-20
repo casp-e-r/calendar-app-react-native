@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, StatusBar, SafeAreaView, TouchableOpacity, Dimensions } from "react-native";
 
-// import Row from "./components/Row";
-// import Button from "./components/Button";
 import calculator, { initialState } from "./util/calculator";
 
 const styles = StyleSheet.create({
@@ -42,7 +40,7 @@ const Button = ({ onPress, text, size, theme }: any) => {
       height: Math.floor(buttonWidth - 10),
       alignItems: "center",
       justifyContent: "center",
-      borderRadius: Math.floor(buttonWidth),
+      // borderRadius: Math.floor(buttonWidth),
       margin: 5
     },
     buttonDouble: {
@@ -110,11 +108,11 @@ const App = () => {
         <Text style={styles.value}>
           {parseFloat(state.currentValue).toLocaleString()}
         </Text>
-        <View style={{ flexDirection: "row" }}>
-          <View style={{ flexDirection: "row", width: "75%" }} >
-
+        {/* <View style={{ flexDirection: "row" }}>
+          <View style={{ flexDirection: "row", width: "75%", backgroundColor: "red", }} >
+            <Text>ASD</Text>
           </View>
-          <View>
+          <View style={{ backgroundColor: "blue", width: "25%" }}>
             <Button
               text="+"
               theme="accent"
@@ -131,19 +129,15 @@ const App = () => {
               onPress={() => handleTap("operator", "*")}
             />
             <Button
-            text="/"
-            theme="accent"
-            onPress={() => handleTap("operator", "/")}
-          />
+              text="/"
+              theme="accent"
+              onPress={() => handleTap("operator", "/")}
+            />
           </View>
 
-        </View>
-        {/* <Row>
-          <Button
-            text="Clear"
-            theme="secondary"
-            onPress={() => {backSpace.clearLastNumber() }}
-          />
+        </View> */}
+        <Row>
+          
           <Button
             text="C"
             theme="secondary"
@@ -200,9 +194,12 @@ const App = () => {
         </Row>
 
         <Row>
+        <Button
+            text="Clear"
+            onPress={() => {backSpace.clearLastNumber() }}
+          />
           <Button
             text="0"
-            size="double"
             onPress={() => handleTap("number", 0)}
           />
           <Button text="." onPress={() => handleTap("number", ".")} />
@@ -211,7 +208,7 @@ const App = () => {
             theme="accent"
             onPress={() => handleTap("equal", null)}
           />
-        </Row> */}
+        </Row>
       </SafeAreaView>
     </View>
   );
